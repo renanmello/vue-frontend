@@ -50,16 +50,18 @@
   
   <style scoped>
   .login-container {
+    background-color: rgb(135, 151, 222);
+    align-items: center;
     width: 300px;
     margin: auto;
     padding: 20px;
     text-align: center;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 20px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   }
   .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 15px ;
     text-align: left;
   }
   label {

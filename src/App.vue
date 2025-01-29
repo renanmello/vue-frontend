@@ -10,6 +10,11 @@ export default {
 
 <style>
 #app {
+  background-image: url('./assets/electric-grid.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,4 +22,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
