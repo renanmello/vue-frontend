@@ -7,16 +7,16 @@
       <h2>Dados da Subestação</h2>
 
       <label>Código:</label>
-      <input v-model="subestacao.codigo" required maxlength="3" />
+      <input placeholder="Máximo 3 Digitos" v-model="subestacao.codigo" required maxlength="3" />
 
       <label>Nome:</label>
-      <input v-model="subestacao.nome" required maxlength="100" />
-
+      <input placeholder="Ex: Estacao Figueredo" v-model="subestacao.nome" required maxlength="100" />
+      
       <label>Latitude:</label>
-      <input v-model="subestacao.latitude" type="number" step="0.0000000000001" required />
+      <input placeholder="-90 a 90 " v-model="subestacao.latitude" type="number" step="0.0000000000001" required />
 
       <label>Longitude:</label>
-      <input v-model="subestacao.longitude" type="number" step="0.0000000000001" required />
+      <input placeholder="-180 a 180" v-model="subestacao.longitude" type="number" step="0.0000000000001" required />
     </form>
 
     <!-- Formulário de Rede MT -->
@@ -24,13 +24,13 @@
       <h2>Adicionar Rede MT</h2>
 
       <label>Código:</label>
-      <input v-model="rede.codigo" required maxlength="5" />
+      <input placeholder="Máximo 5 Digitos" v-model="rede.codigo" required maxlength="5" />
 
       <label>Nome:</label>
       <input v-model="rede.nome" maxlength="100" />
 
       <label>Tensão Nominal:</label>
-      <input v-model="rede.tensaoNominal" type="number" step="0.01" />
+      <input placeholder="de 1 a 500" v-model="rede.tensaoNominal" type="number" step="0.01" />
 
       <button type="submit" class="add-btn">Adicionar Rede</button>
     </form>
