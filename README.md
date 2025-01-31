@@ -1,5 +1,5 @@
 # sinapsisfrontend
-#📌 Projeto: Sistema de Cadastro de Subestações e Redes MT
+📌 Projeto: Sistema de Cadastro de Subestações e Redes MT
 
 Este repositório contém uma aplicação web para cadastro e visualização de subestações, utilizando um mapa do Google Maps para exibição de localização geográfica. O projeto é composto por um front-end desenvolvido com Vue 3 e um back-end desenvolvido com Java e Spring Boot.
 
