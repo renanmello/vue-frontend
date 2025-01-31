@@ -2,28 +2,16 @@
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
+import { GMapMap, GMapMarker } from '@fawmi/vue-google-maps';
 
 const route = useRoute();
 const router = useRouter();
 const id = route.params.id; // Obtendo ID da URL
 const subestacao = ref(null);
 const center = ref({ lat: 0, lng: 0 }); // Inicialize com valores padrão
-const isMapLoaded = ref(false); // Controle se o mapa foi carregado
+//const mapaCarregado = ref(true);
 
-// Tente carregar o Google Maps
-let GMapMap, GMapMarker;
-try {
-  const { useGmapApi } = await import('@fawmi/vue-google-maps');
-  const { isLoaded } = useGmapApi({
-    key: 'AIzaSyDqWVqic-RPzXkZvTJMiJJKBvuVJzAIUQs', // Substitua pela sua chave do Google Maps
-    libraries: ['places'], // Adicione outras bibliotecas, se necessário
-  });
-  isMapLoaded.value = isLoaded;
-  ({ GMapMap, GMapMarker } = await import('@fawmi/vue-google-maps'));
-} catch (error) {
-  console.error('Erro ao carregar o Google Maps:', error);
-  isMapLoaded.value = false;
-}
+
 
 onMounted(async () => {
   try {
@@ -64,21 +52,23 @@ const voltarDashboard = () => {
     </table>
 
     <h3>Localização no Mapa</h3>
-    <div v-if="isMapLoaded && subestacao" class="mapa">
-      <component :is="GMapMap"
-        :center="center"
-        :zoom="14"
-        map-type-id="roadmap"
-        style="width: 100%; height: 400px"
-      >
-        <component :is="GMapMarker" :position="center" />
-      </component>
+    <div v-if="subestacao">
+      <div v-if="subestacao.latitude && subestacao.longitude" class="mapa">
+        <GMapMap
+          :center="{ lat: parseFloat(subestacao.latitude), lng: parseFloat(subestacao.longitude) }"
+          :zoom="14"
+          map-type-id="roadmap"
+          style="width: 100%; height: 400px"
+        >
+          <GMapMarker :position="{ lat: parseFloat(subestacao.latitude), lng: parseFloat(subestacao.longitude) }" />
+        </GMapMap>
+      </div>
+      <div v-else class="processando">
+        Estamos processando...
+      </div>
     </div>
-    <div v-else-if="!isMapLoaded">Erro ao carregar o mapa. Verifique a conexão ou a chave da API.</div>
-    <div v-else>Dados da subestação não carregados.</div>
   </div>
 </template>
-
 <style scoped>
 .container {
   max-width: 800px;
@@ -89,6 +79,9 @@ const voltarDashboard = () => {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+  background-color: white; 
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); 
 }
 .tabela-detalhes th, .tabela-detalhes td {
   border: 1px solid #ddd;
