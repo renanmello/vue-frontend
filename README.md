@@ -1,21 +1,19 @@
 # sinapsisfrontend
-📌 Projeto: Sistema de Cadastro de Subestações e Redes MT
+📌 Project: Substation and MV Network Registration System
 
-Este repositório contém uma aplicação web para cadastro e visualização de subestações, utilizando um mapa do Google Maps para exibição de localização geográfica. O projeto é composto por um front-end desenvolvido com Vue 3 e um back-end desenvolvido com Java e Spring Boot.
+This repository contains a web application for registering and viewing substations, using a Google Maps map to display geographic location. The project consists of a front-end developed with Vue 3 and a back-end developed with Java and Spring Boot.
 
-🚀 Tecnologias Utilizadas
+🚀 Technologies Used
 
 Front-end
 
 Vue.js 3 (Composition API)
 
-Vue Router (Gerenciamento de rotas)
+Vue Router (Route Management)
 
-Vue Google Maps (Exibição de localização geográfica)
+Vue Google Maps (Geolocation Display)
 
-Axios (Consumo da API do back-end)
-
-Tailwind CSS (Estilização da interface)
+Axios (Backend API Consumption)
 
 ## Project setup
 ```
