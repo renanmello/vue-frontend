@@ -17,7 +17,7 @@
             <td>{{ sub.nome }}</td>
             <td><button class="edit-btn">✏️</button></td>
             <td><button class="delete-btn">🗑️</button></td>
-            <td><button class="map-btn">🌍</button></td>
+            <td><button class="map-btn" @click="verNoMapa(sub.id)">🌍</button></td>
           </tr>
         </tbody>
       </table>
@@ -30,10 +30,22 @@
   <script>
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
+  import { useRouter } from 'vue-router';
+
+ 
   
+  
+
   export default {
+    
     name: 'DashBoard',
     setup() {
+      const router = useRouter();
+
+      const verNoMapa = (id) => {
+      router.push(`/subestacao/${id}`);
+    };
+
       const subestacoes = ref([]);
   
       onMounted(async () => {
@@ -59,7 +71,7 @@
       // Aqui você pode redirecionar para uma página de cadastro ou abrir um modal
     };
   
-      return { subestacoes, adicionarSubestacao };
+      return { subestacoes, adicionarSubestacao, verNoMapa };
     },
   };
   </script>
